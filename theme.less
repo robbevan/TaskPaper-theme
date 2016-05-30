@@ -1,0 +1,118 @@
+// These are TaskPaper's default theme rules that your own theme.less file
+// can override and customize. See Creating Themes for more information.
+// See http://guide.taskpaper.com/creating_themes.html to get started.
+
+// UI Scale
+@user-font-size: 13;
+@ui-scale: 1;
+
+// UI Colors
+// @tint-color: rgb(0, 122, 255);
+@tint-color: #fb3332;
+@selection-color: mix(@tint-color, @background-color, 30%); // rgb(148, 192, 255);
+@invisibles-color: mix(@tint-color, @background-color, 70%); // rgb(67, 119, 211);
+
+// Base text
+@text-color: rgb(20%, 20%, 20%);
+@background-color: white;
+@font-family: "Fira Code";
+@line-height-multiple: 1.1;
+
+editor {
+  color: @text-color;
+  ui-scale: @ui-scale;
+  font-size: @user-font-size;
+  font-family: @font-family;
+  background-color: @background-color;
+  line-height-multiple: @line-height-multiple;
+  item-indent: 20 * @ui-scale;
+  caret-width: floor(2 * @ui-scale);
+  caret-color: @tint-color;
+  drop-indicator-color: @tint-color;
+  invisibles-color: @invisibles-color;
+  folded-items-label: "¶—¶";
+  filtered-items-label: "¶—¶";
+  item-handle-size: floor(7 * @ui-scale);
+  selection-background-color: @selection-color;
+  guide-line-color: mix(@tint-color, @background-color, 10%);
+  guide-line-width: floor(1 * @ui-scale);
+  message-color: mix(@text-color, @background-color, 50%);
+}
+
+sidebar {
+  search-item-prefix: ":: ";
+}
+
+item {
+  handle-color: none;
+  handle-border-color: mix(@tint-color, @background-color, 20%);
+  handle-border-width: floor(1 * @ui-scale);
+}
+
+item[collapsed] {
+  handle-color: @tint-color;
+  handle-border-color: none;
+}
+
+item[filtered] {
+  handle-color: mix(@tint-color, @background-color, 20%);
+  handle-border-color: none;
+}
+
+item[empty] {
+  handle-color: none;
+  handle-border-color: none;
+}
+
+item[data-type="note"] {
+  font-style: italic;
+}
+
+item[data-type="task"] {
+  font-style: normal;
+}
+
+item[data-type="project"] {
+  font-weight: bold;
+  line-height-multiple: 1.5;
+}
+
+item[data-today] {
+  color: rgb(255, 0, 0);
+}
+
+item[data-now] {
+  color: orange;
+}
+
+item[data-someday] {
+  color: lightgrey;
+}
+
+item[data-done] {
+  > run[content] {
+    color: lightgrey;
+    text-strikethrough: NSUnderlineStyleSingle;
+    text-strikethrough-color: lightgrey;
+  }
+}
+
+run[link] {
+  cursor: pointer;
+  color: lightsteelblue;
+}
+
+run[link^="button"] {
+  color: @text-color;
+}
+
+run[link^="filter"] {
+  color: @text-color;
+}
+
+run[tag] {
+  font-size: @user-font-size;
+  font-style: normal;
+  font-weight: normal;
+  color: mix(@text-color, @background-color, 35%);
+}
